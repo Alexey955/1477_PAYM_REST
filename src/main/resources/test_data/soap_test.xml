@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:processResponse xmlns:ns2="http://ws.xxxxx.com/">
+            <response>
+                <direction>response</direction>
+                <reference>09FG10021008111306320</reference>
+                <amount>0.0</amount>
+                <totalFailed>0</totalFailed>
+                <totalSuccess>0</totalSuccess>
+                <error>1</error>
+                <message>Invalid</message>
+                <otherReference>6360e28990c743a3b3234</otherReference>
+                <action>FT</action>
+                <openingBalance>0.0</openingBalance>
+                <closingBalance>0.0</closingBalance>
+            </response>
+        </ns2:processResponse>
+    </S:Body>
+</S:Envelope>
