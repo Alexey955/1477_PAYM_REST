@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static hello.classes.utils.Utils.*;
 
-@RestController
+//@RestController
 public class UKiS_1410 {
 
     private UKiS_1410_bodies uKiS_1410_bodies = new UKiS_1410_bodies();
@@ -27,7 +27,7 @@ public class UKiS_1410 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -54,7 +54,7 @@ public class UKiS_1410 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", responseBody);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();

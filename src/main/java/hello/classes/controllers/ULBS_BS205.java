@@ -26,7 +26,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import static hello.classes.utils.Utils.*;
 import static hello.classes.utils.Utils.fillResponse;
 
-@RestController
+//@RestController
 //public class ULBS_BS205 extends HandlerInterceptorAdapter {
 public class ULBS_BS205 {
 
@@ -43,7 +43,7 @@ public class ULBS_BS205 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Получаем EBMID из body
         String EBMID = body.substring(body.indexOf("<ns5:EBMID>") + 11, body.indexOf("<ns5:EBMID>") + 47);
@@ -116,7 +116,7 @@ public class ULBS_BS205 {
                 //debug; наполнение объекта RequestAsync для ответа и записываем в файл
                 RequestAsync requestAsyncLog = new RequestAsync();
                 fillRequestAsync(requestAsyncLog, responseBody, httpPost, requestLog.getId());
-                printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestAsyncLog.toString());
+                printLogs("./1477_PAYM_REST_logs/logs.txt", requestAsyncLog.toString());
 
                 stop();
             }
@@ -125,7 +125,7 @@ public class ULBS_BS205 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", null);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
     }
 
 //    private Session_data_1408_bodies session_data_1408_bodies = new Session_data_1408_bodies();

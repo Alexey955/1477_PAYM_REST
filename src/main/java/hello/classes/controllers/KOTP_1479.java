@@ -3,10 +3,7 @@ package hello.classes.controllers;
 import hello.classes.bodies.KOTP_1479_bodies;
 import hello.classes.elements.Request;
 import hello.classes.elements.StringToInfluxDB;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +32,7 @@ public class KOTP_1479 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -86,7 +83,54 @@ public class KOTP_1479 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", responseBody);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+
+        //Записываем в файл для дальнейшей отправки в InfluxDB
+//        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
+//        stringToInfluxDB.setMethod("GET_/session/{sessionId}/SMBIB/default");
+//        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
+
+        return null;
+    }
+
+    @PostMapping("/api/v1/status-info")
+    public String postStatusInfo(HttpServletRequest request, HttpServletResponse response,
+                             @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
+
+        //фиксируем время поступления сообщения
+//        long timeStart = System.currentTimeMillis();
+
+        //debug; наполнение объекта Request для запроса и записываем в файл
+        Request requestLog = new Request();
+        fillRequest(requestLog, request, headers, "false", body);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+
+        //Добавляем заголовки для ответа
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+
+        //debug; Добавляем заголовки для ответа
+//        setHeaderFromFile("./Header_getSession_debug.txt", response);
+
+        //Добавляем тело для ответа
+//        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
+//        try {
+//            response.getWriter().write(responseBody);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //debug; Добавляем тело для ответа
+        String bodyStr = setBodyFromFile("./templates/Body_postStatusInfo_debug.txt", response);
+
+        pause(300); //По умолчанию
+
+//        responseLog.setBody(responseBody);
+
+        //debug; наполнение объекта Request для ответа и записываем в файл
+        Request responseLog = new Request();
+        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();

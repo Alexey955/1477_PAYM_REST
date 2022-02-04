@@ -1,8 +1,9 @@
 {
 	"user": {
 		"activeClient": {
-			"mdmOsnClient": "1000000001",
-			"mdmPkbClient": "1234517659823",
+			"mdmOsnClient": "1111111111",
+			"mdmPkbClient": "1111111111",
+			"mdmCode": "1111111111",
 			"vtbBoIdClient": 2014335
 		},
 		"emails": [
@@ -17,15 +18,15 @@
 				"isTrusted": false
 			}
 		],
-		"firstName": "??????",
+		"firstName": "Ivan",
 		"ids": {
-			"acUniqueClientNumber": "20061284",
-			"login": "AkopVnwm",
-			"mdmOsn": "1000000001",
+			"acUniqueClientNumber": "20059736",
+			"login": "testing_payments_022",
+			"mdmOsn": "3222284235",
 			"vtbBoIdUser": 323920
 		},
-		"lastName": "????",
-		"middleName": "??????????",
+		"lastName": "Ivanov",
+		"middleName": "Ivanovich",
 		"phones": [
 			{
 				"fullPhoneNumber": "968 6000000",
@@ -38,14 +39,15 @@
 				"isTrusted": true
 			}
 		],
-		"position": "????????",
+		"position": "Tester",
 		"fingerprint": null,
 		"boRSAfingerprint": null
 	},
 	"userClients": [
 		{
-			"mdmOsnClient": "1000000001",
-			"mdmPkbClient": "1234517659823",
+			"mdmOsnClient": "1111111111",
+			"mdmPkbClient": "1111111111",
+			"mdmCode": "1111111111",
 			"vtbBoIdClient": 2014335,
 			"addresses": null,
 			"crossReferences": [
@@ -573,6 +575,6 @@
 			}
 		}
 	],
-	"sessionId": "12345678-d93b-4426-9526-dbbaaf5377ab",
+	"sessionId": "cbd1830f-ca34-4e72-9371-e93c7d0ece5d",
 	"firstFactor": "LOGIN"
 }
