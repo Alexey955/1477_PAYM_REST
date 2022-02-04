@@ -33,7 +33,7 @@ public class Session_data_1408 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -42,7 +42,7 @@ public class Session_data_1408 {
 //        setHeaderFromFile("./Header_getSession_debug.txt", response);
 
 //        String mdmOsn = (sessionId.replaceAll("-","")).substring(0,8);
-        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
+//        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
 
         //Добавляем тело для ответа
 //        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
@@ -62,7 +62,7 @@ public class Session_data_1408 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", bodyStr);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
@@ -167,7 +167,7 @@ public class Session_data_1408 {
         return null;
     }
 
-    @PutMapping("/session/{sessionId}/SMBIB/accounts")
+//    @PutMapping("/session/{sessionId}/SMBIB/accounts")
     public String putSessionAccounts(HttpServletRequest request, HttpServletResponse response,
                              @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body,
                              @PathVariable String sessionId){
@@ -178,7 +178,7 @@ public class Session_data_1408 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -204,7 +204,7 @@ public class Session_data_1408 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", bodyStr);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();

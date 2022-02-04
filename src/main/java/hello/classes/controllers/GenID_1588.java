@@ -1,8 +1,6 @@
 package hello.classes.controllers;
 
-import hello.classes.bodies.SPM_408_bodies;
 import hello.classes.elements.Request;
-import hello.classes.elements.StringToInfluxDB;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -10,23 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static hello.classes.utils.Utils.*;
+import static hello.classes.utils.Utils.printLogs;
 
 @RestController
-public class SPM_408 {
-
-    private SPM_408_bodies spm_408_bodies = new SPM_408_bodies();
-
-    @PostMapping("/ExtendedRuleEngine/services/AdaptiveAuthentication")
-    public String postAdaptiveAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                  @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
+public class GenID_1588 {
+    @PostMapping("/api/v1/template/list")
+    public String postTemplateList(HttpServletRequest request, HttpServletResponse response,
+                                @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
 
         //фиксируем время поступления сообщения
 //        long timeStart = System.currentTimeMillis();
@@ -37,13 +28,13 @@ public class SPM_408 {
         printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
-        response.setHeader("Content-Type", "text/xml;charset=utf-8");
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
 
         //debug; Добавляем заголовки для ответа
-//        setHeaderFromFile("./Header_postAdaptiveAuthentication_debug.txt", response);
+//        setHeaderFromFile("./templates/Header_postTemplateList_debug.txt", response);
 
         //Добавляем тело для ответа
-//        String responseBody = spm_408_bodies.getBodypostAdaptiveAuthentication();
+//        String responseBody = ep_1413_bodies.getBodyPostValidate();
 //        try {
 //            response.getWriter().write(responseBody);
 //        } catch (IOException e) {
@@ -51,9 +42,9 @@ public class SPM_408 {
 //        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postAdaptiveAuthentication_debug.txt", response);
+        String bodyStr = setBodyFromFile("./templates/Body_postTemplateList_debug.txt", response);
 
-        pause(200); //По умолчанию
+        pause(300); //default
 
 //        responseLog.setBody(responseBody);
 

@@ -1,0 +1,20 @@
+{
+	"issuer": "userIssuer",
+	"serialNumber": "1233151815145",
+	"certificate": "certificateData",
+	"subject": "userIssuer",
+	"commonName": "certificate name",
+	"validFrom": "2022-01-18T10:06:15",
+	"validTo": "2023-02-02T10:06:15",
+	"status": "VALID",
+	"statusDetails": {
+		"isRevoked": false,
+		"isExpired": false,
+		"invalidSignature": false,
+		"notActiveYet": false
+	},
+	"keyAlgorithm": "SHA-256",
+	"signatureAlgorithm": "SHA-256",
+	"sha1": "sha1",
+	"userId": "3222284235"
+}

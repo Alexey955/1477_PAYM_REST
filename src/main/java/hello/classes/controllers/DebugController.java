@@ -21,7 +21,7 @@ import java.util.UUID;
 
 import static hello.classes.utils.Utils.*;
 
-//@RestController
+@RestController
 public class DebugController {
 
     @RequestMapping("/**")
@@ -38,10 +38,10 @@ public class DebugController {
 //        pause(5000);
 
         //debug; Добавляем заголовки для ответа
-        setHeaderFromFile("./Header_debug.txt", response);
+        setHeaderFromFile("./templates/Header_debug.txt", response);
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./Body_debug.txt", response);
+        String bodyStr = setBodyFromFile("./templates/Body_debug.txt", response);
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();

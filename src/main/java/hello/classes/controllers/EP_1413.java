@@ -33,7 +33,7 @@ public class EP_1413 {
         //debug; наполнение объекта Request для запроса и записываем в файл
         Request requestLog = new Request();
         fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -59,7 +59,105 @@ public class EP_1413 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", bodyStr);
-        printLogs("./templates/1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+
+        //Записываем в файл для дальнейшей отправки в InfluxDB
+//        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
+//        stringToInfluxDB.setMethod("GET_/session/{sessionId}/SMBIB/default");
+//        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
+
+        return null;
+    }
+
+    @PostMapping("/passport/tech/oauth2/token")
+    public String postTechToken(HttpServletRequest request, HttpServletResponse response,
+                               @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
+
+        //фиксируем время поступления сообщения
+//        long timeStart = System.currentTimeMillis();
+
+        //debug; наполнение объекта Request для запроса и записываем в файл
+        Request requestLog = new Request();
+        fillRequest(requestLog, request, headers, "false", body);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+
+        //Добавляем заголовки для ответа
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+
+        //debug; Добавляем заголовки для ответа
+//        setHeaderFromFile("./templates/Header_postValidate_debug.txt", response);
+
+        //Добавляем тело для ответа
+//        String responseBody = ep_1413_bodies.getBodyPostValidate();
+//        try {
+//            response.getWriter().write(responseBody);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //debug; Добавляем тело для ответа
+        String bodyStr = setBodyFromFile("./templates/Body_postTechToken_debug.txt", response);
+
+        pause(300); //default
+
+//        responseLog.setBody(responseBody);
+
+        //debug; наполнение объекта Request для ответа и записываем в файл
+        Request responseLog = new Request();
+        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+
+        //Записываем в файл для дальнейшей отправки в InfluxDB
+//        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
+//        stringToInfluxDB.setMethod("GET_/session/{sessionId}/SMBIB/default");
+//        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
+
+        return null;
+    }
+
+    @GetMapping("/api/certificate/{issuer}/{serialNumber}")
+    public String getCertIssuer(HttpServletRequest request, HttpServletResponse response,
+                             @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body,
+                             @PathVariable String issuer, @PathVariable String serialNumber){
+
+        //фиксируем время поступления сообщения
+//        long timeStart = System.currentTimeMillis();
+
+        //debug; наполнение объекта Request для запроса и записываем в файл
+        Request requestLog = new Request();
+        fillRequest(requestLog, request, headers, "false", body);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+
+        //Добавляем заголовки для ответа
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+
+        //debug; Добавляем заголовки для ответа
+//        setHeaderFromFile("./Header_getSession_debug.txt", response);
+
+//        String mdmOsn = (sessionId.replaceAll("-","")).substring(0,8);
+//        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
+
+        //Добавляем тело для ответа
+//        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
+//        try {
+//            response.getWriter().write(responseBody);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //debug; Добавляем тело для ответа
+        String bodyStr = setBodyFromFile("./templates/Body_getCertIssuer_debug.txt", response);
+
+        pause(300); //default
+
+//        responseLog.setBody(responseBody);
+
+        //debug; наполнение объекта Request для ответа и записываем в файл
+        Request responseLog = new Request();
+        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
