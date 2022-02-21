@@ -1,0 +1,13 @@
+{
+	"result": {
+		"success": "true",
+		"signTime": "2021-09-07T09:21:58",
+		"certificate": {
+			"serialNumber": "014E03070930012002066E",
+			"issuer": "/C=RU/L=МОСКВА/O=Банк ВТБ (ПАО)/CN=ТЕСТ УЦ Банк ВТБ (ПАО)/Email=GKZI@vtb24.ru",
+			"subject": "/C=RU/OU=БКО/CN=Тестовый Пользователь Платежей/Email=akarlova@vtb.ru",
+			"notBefore": "Mar 18 14:06:40 2021 GMT",
+			"notAfter": "Mar 18 14:06:40 2023 GMT"
+		}
+	}
+}

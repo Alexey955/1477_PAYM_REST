@@ -1,0 +1,7 @@
+.git/
+.idea/
+out/
+target/
+1477_PAYM_REST_logs/
+RestMavenTest.iml
+1477_PAYM_REST.iml
