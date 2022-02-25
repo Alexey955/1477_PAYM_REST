@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -112,16 +113,19 @@ public class KOTP_1479 {
         //debug; Добавляем заголовки для ответа
 //        setHeaderFromFile("./Header_getSession_debug.txt", response);
 
+        //генерируем текущий timestamp
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
         //Добавляем тело для ответа
-//        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = kotp_1479_bodies.postStatusInfo(String.valueOf(timestamp.getTime()));
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postStatusInfo_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_postStatusInfo_debug.txt", response);
 
         pause(300); //По умолчанию
 
@@ -129,7 +133,7 @@ public class KOTP_1479 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB

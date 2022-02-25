@@ -21,7 +21,7 @@ import java.util.UUID;
 
 import static hello.classes.utils.Utils.*;
 
-@RestController
+//@RestController
 public class DebugController {
 
     @RequestMapping("/**")

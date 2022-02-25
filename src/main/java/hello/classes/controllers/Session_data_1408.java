@@ -41,19 +41,23 @@ public class Session_data_1408 {
         //debug; Добавляем заголовки для ответа
 //        setHeaderFromFile("./Header_getSession_debug.txt", response);
 
+        //Генерируем mdmOsn
 //        String mdmOsn = (sessionId.replaceAll("-","")).substring(0,8);
-//        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
+        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
+
+        //генерируем mdmOsnClient
+        String mdmOsnClient = String.valueOf(1000000000 + Integer.parseInt(mdmOsn.substring(1,10))* 4 - 3);
 
         //Добавляем тело для ответа
-//        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = session_data_1408_bodies.getBodyGetSession(mdmOsnClient,mdmOsn);
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_getSession_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_getSession_debug.txt", response);
 
         pause(30); //Из тестов
 
@@ -61,7 +65,7 @@ public class Session_data_1408 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB

@@ -43,15 +43,15 @@ public class SPM_408 {
 //        setHeaderFromFile("./Header_postAdaptiveAuthentication_debug.txt", response);
 
         //Добавляем тело для ответа
-//        String responseBody = spm_408_bodies.getBodypostAdaptiveAuthentication();
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = spm_408_bodies.getBodypostAdaptiveAuthentication();
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postAdaptiveAuthentication_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_postAdaptiveAuthentication_debug.txt", response);
 
         pause(200); //По умолчанию
 
@@ -59,7 +59,7 @@ public class SPM_408 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB

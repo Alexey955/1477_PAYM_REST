@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static hello.classes.utils.Utils.*;
 import static hello.classes.utils.Utils.printLogs;
@@ -41,24 +44,33 @@ public class EP_1413 {
         //debug; Добавляем заголовки для ответа
 //        setHeaderFromFile("./templates/Header_postValidate_debug.txt", response);
 
+        //Получаем sub из заголовка
+        String bearer = request.getHeader("authorization");
+        byte[] decodedBytes  = Base64.getDecoder().decode(bearer.split("\\.")[1]);
+        String decodedString = new String(decodedBytes);
+        Pattern pattern = Pattern.compile("\"sub\":\"(.*?)\"");
+        Matcher matcher = pattern.matcher(decodedString);
+        matcher.find();
+        String sub = decodedString.substring(matcher.start() + 7, matcher.end() - 1);
+
         //Добавляем тело для ответа
-//        String responseBody = ep_1413_bodies.getBodyPostValidate();
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = ep_1413_bodies.getBodyPostValidate(sub);
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postValidate_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_postValidate_debug.txt", response);
 
-        pause(300); //Из требований
+        pause(300); //По умолчанию
 
 //        responseLog.setBody(responseBody);
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
@@ -89,15 +101,15 @@ public class EP_1413 {
 //        setHeaderFromFile("./templates/Header_postValidate_debug.txt", response);
 
         //Добавляем тело для ответа
-//        String responseBody = ep_1413_bodies.getBodyPostValidate();
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = ep_1413_bodies.getBodyPostTechToken();
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postTechToken_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_postTechToken_debug.txt", response);
 
         pause(300); //default
 
@@ -105,7 +117,7 @@ public class EP_1413 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
@@ -139,16 +151,19 @@ public class EP_1413 {
 //        String mdmOsn = (sessionId.replaceAll("-","")).substring(0,8);
 //        String mdmOsn = "100" + (sessionId.replaceAll("-","")).substring(1,8);
 
+        //Генерируем userId
+        String userId = serialNumber.substring(3,13);
+
         //Добавляем тело для ответа
-//        String responseBody = session_data_1408_bodies.getSession(mdmOsn);
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        String responseBody = ep_1413_bodies.getBodyGetCertIssuer(issuer, serialNumber, userId);
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_getCertIssuer_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_getCertIssuer_debug.txt", response);
 
         pause(300); //default
 
@@ -156,7 +171,7 @@ public class EP_1413 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB

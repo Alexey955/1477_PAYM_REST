@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static hello.classes.utils.Utils.*;
 import static hello.classes.utils.Utils.printLogs;
@@ -42,7 +44,13 @@ public class GenID_1588 {
 //        }
 
         //debug; Добавляем тело для ответа
-        String bodyStr = setBodyFromFile("./templates/Body_postTemplateList_debug.txt", response);
+//        String bodyStr = setBodyFromFile("./templates/Body_postTemplateList_debug.txt", response);
+
+        //Генерируем id
+        Pattern pattern = Pattern.compile("\"string\":\"(..........)\"");
+        Matcher matcher = pattern.matcher(body);
+        matcher.find();
+        String id = body.substring(matcher.start() + 10, matcher.end() - 1);
 
         pause(300); //default
 
@@ -50,7 +58,7 @@ public class GenID_1588 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        fillResponse(responseLog, requestLog, response, "false", id);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
@@ -59,6 +67,6 @@ public class GenID_1588 {
 //        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
 //        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
 
-        return null;
+        return "[" + id + "]";
     }
 }
