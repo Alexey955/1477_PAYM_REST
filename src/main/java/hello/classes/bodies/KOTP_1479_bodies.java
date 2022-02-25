@@ -15,4 +15,11 @@ public class KOTP_1479_bodies {
                 "	}"+
                 "}";
     }
+
+    public String postStatusInfo(String timestamp) {
+        return  "{"+
+                "	\"success\": true,"+
+                "	\"timestamp\": \"" + timestamp + "\""+
+                "}";
+    }
 }
