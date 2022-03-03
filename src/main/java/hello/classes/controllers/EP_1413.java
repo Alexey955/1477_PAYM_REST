@@ -64,7 +64,7 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postValidate_debug.txt", response);
 
-        pause(300); //По умолчанию
+//        pause(300); //По умолчанию
 
 //        responseLog.setBody(responseBody);
 
@@ -111,7 +111,7 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postTechToken_debug.txt", response);
 
-        pause(300); //default
+//        pause(300); //default
 
 //        responseLog.setBody(responseBody);
 
@@ -165,7 +165,7 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_getCertIssuer_debug.txt", response);
 
-        pause(300); //default
+//        pause(300); //default
 
 //        responseLog.setBody(responseBody);
 

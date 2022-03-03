@@ -53,7 +53,7 @@ public class SPM_408 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postAdaptiveAuthentication_debug.txt", response);
 
-        pause(200); //По умолчанию
+//        pause(200); //По умолчанию
 
 //        responseLog.setBody(responseBody);
 

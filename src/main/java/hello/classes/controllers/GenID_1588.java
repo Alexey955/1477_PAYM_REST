@@ -52,7 +52,7 @@ public class GenID_1588 {
         matcher.find();
         String id = body.substring(matcher.start() + 10, matcher.end() - 1);
 
-        pause(300); //default
+//        pause(300); //default
 
 //        responseLog.setBody(responseBody);
 
