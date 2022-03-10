@@ -21,10 +21,10 @@ import java.util.UUID;
 
 import static hello.classes.utils.Utils.*;
 
-@RestController
+//@RestController
 public class DebugController {
 
-//    @RequestMapping("/**")
+    @RequestMapping("/**")
     public String allRequests(HttpServletRequest request, HttpServletResponse response,
                               @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
 

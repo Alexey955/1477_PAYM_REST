@@ -31,9 +31,9 @@ public class Session_data_1408 {
 //        long timeStart = System.currentTimeMillis();
 
         //debug; наполнение объекта Request для запроса и записываем в файл
-        Request requestLog = new Request();
-        fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+//        Request requestLog = new Request();
+//        fillRequest(requestLog, request, headers, "false", body);
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -64,9 +64,9 @@ public class Session_data_1408 {
 //        responseLog.setBody(responseBody);
 
         //debug; наполнение объекта Request для ответа и записываем в файл
-        Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", responseBody);
-        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+//        Request responseLog = new Request();
+//        fillResponse(responseLog, requestLog, response, "false", responseBody);
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
@@ -228,9 +228,9 @@ public class Session_data_1408 {
 //        long timeStart = System.currentTimeMillis();
 
         //debug; наполнение объекта Request для запроса и записываем в файл
-        Request requestLog = new Request();
-        fillRequest(requestLog, request, headers, "false", body);
-        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+//        Request requestLog = new Request();
+//        fillRequest(requestLog, request, headers, "false", body);
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -254,9 +254,9 @@ public class Session_data_1408 {
 //        responseLog.setBody(responseBody);
 
         //debug; наполнение объекта Request для ответа и записываем в файл
-        Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", null);
-        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+//        Request responseLog = new Request();
+//        fillResponse(responseLog, requestLog, response, "false", null);
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
