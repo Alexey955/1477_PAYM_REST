@@ -1,5 +1,6 @@
 package hello.classes.controllers;
 
+import hello.classes.bodies.Notify_1378_bodies;
 import hello.classes.elements.Request;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,10 +18,13 @@ import static hello.classes.utils.Utils.*;
 import static hello.classes.utils.Utils.printLogs;
 
 @RestController
-public class GenID_1588 {
-    @PostMapping("/api/v1/template/list")
-    public String postTemplateList(HttpServletRequest request, HttpServletResponse response,
-                                @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body){
+public class Notify_1378 {
+
+    Notify_1378_bodies notify_1378_bodies = new Notify_1378_bodies();
+
+    @PostMapping("/v1/gateway/message")
+    public String postGatewayMessage(HttpServletRequest request, HttpServletResponse response,
+                                     @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body) {
 
         //фиксируем время поступления сообщения
 //        long timeStart = System.currentTimeMillis();
@@ -35,22 +40,16 @@ public class GenID_1588 {
         //debug; Добавляем заголовки для ответа
 //        setHeaderFromFile("./templates/Header_postTemplateList_debug.txt", response);
 
-        //Добавляем тело для ответа
-//        String responseBody = ep_1413_bodies.getBodyPostValidate();
-//        try {
-//            response.getWriter().write(responseBody);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//        Добавляем тело для ответа
+        String responseBody = notify_1378_bodies.getBodyPostGatewayMessage();
+        try {
+            response.getWriter().write(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //debug; Добавляем тело для ответа
-//        String bodyStr = setBodyFromFile("./templates/Body_postTemplateList_debug.txt", response);
-
-        //Генерируем id
-        Pattern pattern = Pattern.compile("\"string\":\"(..........)\"");
-        Matcher matcher = pattern.matcher(body);
-        matcher.find();
-        String id = body.substring(matcher.start() + 10, matcher.end() - 1);
+//        String bodyStr = setBodyFromFile("./templates/Body_postGatewayMessage_debug.txt", response);
 
 //        pause(300); //default
 
@@ -58,7 +57,7 @@ public class GenID_1588 {
 
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
-        fillResponse(responseLog, requestLog, response, "false", id);
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
@@ -67,6 +66,6 @@ public class GenID_1588 {
 //        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
 //        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
 
-        return "[" + id + "]";
+        return null;
     }
 }

@@ -31,9 +31,9 @@ public class Session_data_1408 {
 //        long timeStart = System.currentTimeMillis();
 
         //debug; наполнение объекта Request для запроса и записываем в файл
-//        Request requestLog = new Request();
-//        fillRequest(requestLog, request, headers, "false", body);
-//        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+        Request requestLog = new Request();
+        fillRequest(requestLog, request, headers, "false", body);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
 
         //Добавляем заголовки для ответа
         response.setHeader("Content-Type", "application/json;charset=utf-8");
@@ -64,9 +64,9 @@ public class Session_data_1408 {
 //        responseLog.setBody(responseBody);
 
         //debug; наполнение объекта Request для ответа и записываем в файл
-//        Request responseLog = new Request();
-//        fillResponse(responseLog, requestLog, response, "false", responseBody);
-//        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+        Request responseLog = new Request();
+        fillResponse(responseLog, requestLog, response, "false", responseBody);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB
 //        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
@@ -208,6 +208,54 @@ public class Session_data_1408 {
         //debug; наполнение объекта Request для ответа и записываем в файл
         Request responseLog = new Request();
         fillResponse(responseLog, requestLog, response, "false", bodyStr);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
+
+        //Записываем в файл для дальнейшей отправки в InfluxDB
+//        StringToInfluxDB stringToInfluxDB = new StringToInfluxDB();
+//        stringToInfluxDB.setMethod("PUT_session/{sessionId}/SMBIB/accounts");
+//        stringToInfluxDB.setTimestamp(String.valueOf(System.currentTimeMillis()));
+//        printLogs("./1477_PAYM_REST_logs/logs.txt", stringToInfluxDB.toString());
+
+        return null;
+    }
+
+    @PutMapping("/session/{sessionId}/SMBIB/SesESignVerificationCode")
+    public String putSessionSesESignVerificationCode(HttpServletRequest request, HttpServletResponse response,
+                                     @RequestHeader Map<String, String> headers, @RequestBody(required = false) String body,
+                                     @PathVariable String sessionId){
+
+        //фиксируем время поступления сообщения
+//        long timeStart = System.currentTimeMillis();
+
+        //debug; наполнение объекта Request для запроса и записываем в файл
+        Request requestLog = new Request();
+        fillRequest(requestLog, request, headers, "false", body);
+        printLogs("./1477_PAYM_REST_logs/logs.txt", requestLog.toString());
+
+        //Добавляем заголовки для ответа
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+
+        //debug; Добавляем заголовки для ответа
+//        setHeaderFromFile("./Header_putSessionAccounts_debug.txt", response);
+
+        //Добавляем тело для ответа
+//        String responseBody = session_data_1408_bodies.putSessionAccounts();
+//        try {
+//            response.getWriter().write(responseBody);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //debug; Добавляем тело для ответа
+//        String bodyStr = setBodyFromFile("./templates/Body_putSessionSesESignVerificationCode_debug.txt", response);
+
+//        pause(30); //Из тестов
+
+//        responseLog.setBody(responseBody);
+
+        //debug; наполнение объекта Request для ответа и записываем в файл
+        Request responseLog = new Request();
+        fillResponse(responseLog, requestLog, response, "false", null);
         printLogs("./1477_PAYM_REST_logs/logs.txt", responseLog.toString());
 
         //Записываем в файл для дальнейшей отправки в InfluxDB

@@ -580,9 +580,11 @@ public class Session_data_1408_bodies {
                 "			}"+
                 "		}"+
                 "	],"+
-                "	\"sessionId\": \"cbd1830f-ca34-4e72-9371-10" + mdmOsnUser + "\","+
+//                "	\"sessionId\": \"cbd1830f-ca34-4e72-9371-10" + mdmOsnUser + "\","+
+                "	\"sessionId\": \"10000001-09b7-48f7-9fe6-757eafb9f906\","+
                 "	\"firstFactor\": \"LOGIN\""+
                 "}";
+
     }
 
     public String getBodyGetSession_old(String ctxi, String mdmOsn, String mdmOsnClient, String mdmPkbClient) {
