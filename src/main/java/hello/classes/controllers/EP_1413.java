@@ -64,7 +64,8 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postValidate_debug.txt", response);
 
-//        pause(300); //По умолчанию
+        //Задержка для /api/signature/file/validate
+        pause(100); //Из логов
 
 //        responseLog.setBody(responseBody);
 
@@ -111,7 +112,8 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postTechToken_debug.txt", response);
 
-//        pause(300); //default
+        //Задержка для /passport/tech/oauth2/token
+        pause(100); //Из логов
 
 //        responseLog.setBody(responseBody);
 
@@ -165,7 +167,8 @@ public class EP_1413 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_getCertIssuer_debug.txt", response);
 
-//        pause(300); //default
+        //Задержка для /api/certificate/{issuer}/{serialNumber}
+        pause(40); //Из логов
 
 //        responseLog.setBody(responseBody);
 

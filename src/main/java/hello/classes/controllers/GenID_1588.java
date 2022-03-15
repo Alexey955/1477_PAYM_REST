@@ -52,7 +52,8 @@ public class GenID_1588 {
         matcher.find();
         String id = body.substring(matcher.start() + 10, matcher.end() - 1);
 
-//        pause(300); //default
+        //Задержка для /api/v1/template/list
+        pause(40); //Из логов
 
 //        responseLog.setBody(responseBody);
 

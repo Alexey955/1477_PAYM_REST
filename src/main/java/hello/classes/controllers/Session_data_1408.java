@@ -59,7 +59,8 @@ public class Session_data_1408 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_getSession_debug.txt", response);
 
-//        pause(30); //Из тестов
+        //Задержка для /session/{sessionId}/SMBIB/default
+        pause(30); //Из логов
 
 //        responseLog.setBody(responseBody);
 
@@ -249,7 +250,8 @@ public class Session_data_1408 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_putSessionSesESignVerificationCode_debug.txt", response);
 
-//        pause(30); //Из тестов
+        //Задержка для /session/{sessionId}/SMBIB/
+        pause(30); //Из логов
 
 //        responseLog.setBody(responseBody);
 

@@ -77,7 +77,8 @@ public class KOTP_1479 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./Body_postCalculation_debug.txt", response);
 
-//        pause(200); //Из тестов
+        //Задержка для /api/v1/calculation
+        pause(250); //Из логов
 
 //        responseLog.setBody(responseBody);
 
@@ -127,7 +128,8 @@ public class KOTP_1479 {
         //debug; Добавляем тело для ответа
 //        String bodyStr = setBodyFromFile("./templates/Body_postStatusInfo_debug.txt", response);
 
-//        pause(300); //По умолчанию
+        //Задержка для /api/v1/status-info
+        pause(100); //По умолчанию
 
 //        responseLog.setBody(responseBody);
 
