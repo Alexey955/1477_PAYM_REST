@@ -54,7 +54,8 @@ public class SPM_408 {
 //        String bodyStr = setBodyFromFile("./templates/Body_postAdaptiveAuthentication_debug.txt", response);
 
         //Задержка для /ExtendedRuleEngine/services/AdaptiveAuthentication
-        pause(2000); //Из логов
+//        pause(2000); //Из логов
+        pause(4000); //x2
 
 //        responseLog.setBody(responseBody);
 

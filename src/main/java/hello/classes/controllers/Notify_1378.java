@@ -52,7 +52,8 @@ public class Notify_1378 {
 //        String bodyStr = setBodyFromFile("./templates/Body_postGatewayMessage_debug.txt", response);
 
         //Задержка для /v1/gateway/message
-        pause(40); //Из логов
+//        pause(40); //Из логов
+        pause(80); //x2
 
 //        responseLog.setBody(responseBody);
 

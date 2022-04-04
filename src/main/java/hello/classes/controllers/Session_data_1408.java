@@ -60,7 +60,8 @@ public class Session_data_1408 {
 //        String bodyStr = setBodyFromFile("./templates/Body_getSession_debug.txt", response);
 
         //Задержка для /session/{sessionId}/SMBIB/default
-        pause(30); //Из логов
+//        pause(30); //Из логов
+        pause(60); //x2
 
 //        responseLog.setBody(responseBody);
 
@@ -251,7 +252,8 @@ public class Session_data_1408 {
 //        String bodyStr = setBodyFromFile("./templates/Body_putSessionSesESignVerificationCode_debug.txt", response);
 
         //Задержка для /session/{sessionId}/SMBIB/
-        pause(30); //Из логов
+//        pause(30); //Из логов
+        pause(60); //x2
 
 //        responseLog.setBody(responseBody);
 
